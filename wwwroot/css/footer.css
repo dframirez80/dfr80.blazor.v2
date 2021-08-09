@@ -1,0 +1,17 @@
+@import './constants.css';
+
+/***********************************************/   
+/****************** footer ******************/
+address{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    padding: 20px;
+    color: var(--color6);
+    background-color: var(--color1);
+}
+address a{
+    text-indent: 20px;
+    color: var(--color5);
+}

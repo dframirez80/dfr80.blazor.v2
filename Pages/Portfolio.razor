@@ -1,0 +1,55 @@
+@page "/portfolio"
+
+<section id="portafolio" class="works-container">
+    <div class="works @effectClass">
+        <h2>Algunos trabajos</h2>
+        <blazorApp.Components.Project
+            BGImage="fundars.jpg"
+            Title="Fundar Dermoestetica"  
+            Info="Se desarrollo el Frontend y el Backend con la carga de datos de informacion de los equipos , imagenes, descripciones y todo lo relacionado con los productos. Ademas se implemento un sistema de pago de equipos en cuotas, permitiendo dar de alta a usuarios y que los mismos clientes accedan al pago de cada una de las cuotas.(usuario/contraseña:1234567)"
+            Images="@imagesP1" 
+            Link="https://fundars.com.ar" />
+        <blazorApp.Components.Project
+            BGImage="mcu.png"
+            Title="Demo Kit LPC845"  
+            Info="Se desarrollo la electronica para el sensado de humedad, temperatura, presion, intensida luminica. Ademas, del control de display 7 segmentos, LED's y teclas"
+            Images="@imagesP2" 
+            Link="#" />
+        <blazorApp.Components.Project
+            BGImage="mcuMobile.png"
+            Title="LPC845 + Android"  
+            Info="Se desarrollo una comunicacion a un celular basado en android. Se conecta por medio de USB OTG disponible en el movil, permitiendo obtener una interfaz grafica para observar las distintas variable del kit."
+            Images="@imagesP3" 
+            Link="#" />
+        <blazorApp.Components.Project
+            BGImage="mcuDesktop.jpg"
+            Title="LPC845 + Desktop"  
+            Info="Se desarrollo una comunicacion a una plataforma Desktop. Se conecta por medio del puerto USB, permitiendo obtener una interfaz grafica para observar las distintas variable del kit."
+            Images="@imagesP3" 
+            Link="#" />
+        <blazorApp.Components.Project
+            BGImage="logo_dfr.png"
+            Title="PortaFolio WEB"  
+            Info="Desarrollo de mi pagina Web adaptable a PC, tablet y celulares. La misma cuenta con secciones de inicio, acerca de mi, proyectos y formulario de contacto"
+            Images="@imagesP5" 
+            Link="https://dfr80.com.ar" />
+
+    </div>
+</section>
+
+@inject IJSRuntime JS
+@code{
+    [CascadingParameter] private DataApp dataAbout { get; set; }
+    string effectClass = "effect-hide", myId="portafolio";
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        dataAbout.PositionElement = await JS.InvokeAsync<double>("eval", "document.getElementById('"+myId+"').getBoundingClientRect().top;");
+        effectClass = dataAbout.Effect();
+    }
+    public List<string> imagesP1 = new List<string> {"html.png","css.png","js.png","php.png","mysql.png"};
+    public List<string> imagesP2 = new List<string> {"c.png","se.png"};
+    public List<string> imagesP3 = new List<string> {"xamarin.png","csharp.png","html.png","css.png","js.png"};
+    public List<string> imagesP4 = new List<string> {"html.png","css.png","js.png","csharp.png"};
+    public List<string> imagesP5 = new List<string> {"html.png","css.png","js.png","php.png"};
+
+}

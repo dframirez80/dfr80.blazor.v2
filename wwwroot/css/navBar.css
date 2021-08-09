@@ -1,0 +1,93 @@
+@import './constants.css';
+
+.navbar-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: var(--height-1);
+    padding: 5px;
+    background-color: var(--color2);
+}
+.navbar-title{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+    .title-img{
+        width: 50px;
+        height: auto;
+    }
+    .title-text{
+        padding-left: 10px;
+        font-size: 2.1rem;
+        width: 100%;    
+        color: var(--color5);
+    }
+.navbar-menu{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    text-transform: uppercase;
+    color: var(--color5);
+    z-index: 1;
+}
+    .menu-item{
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+        font-size: var(--font1);
+        background-color: var(--color2);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border-bottom: 2px inset var(--color0);
+        color: var(--color5);
+    }   
+    .menu-item:hover, .menu-item:active{
+        border-bottom: 2px inset var(--color5);
+        background-color: var(--color4);
+        color: var(--color2);
+        transform: translateY(-2px);
+    }
+.navbar-btn{
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+.navbar-btn i{
+    color: var(--color5);
+}
+@media screen and (max-width: 830px) {
+    .navbar-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.5s ease;
+    }    
+    .navbar-btn:active{
+        transform: rotate(0.25turn);
+    }
+    .navbar-menu{
+        position: absolute;
+        top: var(--height-1);
+        flex-direction: column;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: all 0.5s ease-in-out;
+        opacity: 0;
+    }
+    .navbar-menu-show{
+        opacity: 1;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    .menu-item:hover, .menu-item:active{
+        transform: translateY(0px);
+    }
+}
+@media screen and (max-width: 400px) {
+    .title-text{
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,24 @@
+@page "/contact"
+
+<section id="contacto" class="contact-container">
+    <div class="contact-title @effectClass">
+        <h2>Contacto</h2>
+        <p>Puedes encontrarme en:</p>
+        <div class="contact-social">
+            <a href="https://github.com/dframirez80" rel="noopener" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://ar.linkedin.com/in/dario-federico-ramirez-2111a534" rel="noopener" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+    <blazorApp.Components.Form />
+</section>
+
+@inject IJSRuntime JS
+@code{
+    [CascadingParameter] private DataApp dataAbout { get; set; }
+    string effectClass = "effect-hide", myId="contacto";
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        dataAbout.PositionElement = await JS.InvokeAsync<double>("eval", "document.getElementById('"+myId+"').getBoundingClientRect().top;");
+        effectClass = dataAbout.Effect();
+    }
+}

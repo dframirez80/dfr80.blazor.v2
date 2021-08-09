@@ -1,0 +1,71 @@
+@import './constants.css';
+
+#win-ligthbox{
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    color: var(--color5);
+    width: 100%;
+    height: 100%;
+    background: var(--color1);
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 101;
+    transition: all 0.1s ease;
+    font-size: 1.2rem;
+}
+.ligthbox-container{
+    width: 50%;
+    height: 60%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px;
+    background: var(--color2);
+    border-radius: 5px;
+    border: 4px solid var(--color3);
+}
+#title{
+    color: var(--color5);
+    flex: 5 1 auto;
+}
+#message{
+    color: var(--color5);
+    flex: 15 1 auto;
+}
+#btn-ligthbox{
+    flex: 1 1 auto;
+}
+.hide{
+    transform: translate(0%, -100%);
+}
+/*--------------------------------------------------------*/
+#btn-ligthbox{
+    color: var(--color5);
+    background: var(--color2);
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 1rem;
+    border: 2px solid var(--color5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#btn-ligthbox:hover{
+    background: var(--color5);
+    color: var(--color2);
+}
+#btn-ligthbox:active{
+    box-shadow: 0px 0px 0px 0px var(--color5);
+}
+@media screen and (max-width: 550px) {
+    .ligthbox-container{
+        width: 90%;
+        height: 80%;
+    }
+}

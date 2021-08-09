@@ -1,0 +1,11 @@
+
+@inject IJSRuntime Js
+
+<a href="#" class="up-button @Show" target="_top" @onclick="Up"></a>
+ 
+@code{
+   [Parameter] public string Show { get; set; }
+   async Task Up(){
+      await Js.InvokeAsync<double>("eval", "document.getElementById('page').scrollTop = 0;");
+   }
+}

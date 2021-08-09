@@ -1,0 +1,26 @@
+<div id="aboutMe" class="about-description @effectClass">
+    <h2>Acerca de mi</h2>
+    <p>
+        Desde 2004 tengo experiencia en el área de desarrollo de productos electronicos. Diseño de circuitos impresos y electronico. 
+        Imparto seminarios y capacitaciones para personas, empresas e instituciones educativas.
+    </p>
+    <p>
+        Desde 2014 pertenezco al Laboratorio de Sistemas Embebidos (LSE) de la UTN FRA
+        desarrollando contenido para una mejor <strong>EDUCACION PUBLICA Y GRATUITA</strong>.
+    </p>
+    <p>
+        Tambien ofrezco servicios relacionado con la industria electrónica analógica y digital. Realizo trabajos de programación para microcontrolador, automatizacion de mediciones y el desarrollo de aplicaciones de escritorio, moviles y Web. 
+    </p>
+</div>
+
+@inject IJSRuntime JS
+@code{
+    [CascadingParameter] private DataApp dataAbout { get; set; }
+    string effectClass = "effect-hide", myId="aboutMe";
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        dataAbout.PositionElement = await JS.InvokeAsync<double>("eval", "document.getElementById('"+myId+"').getBoundingClientRect().top;");
+        //Console.WriteLine(dataAbout.PositionElement);
+        effectClass = dataAbout.Effect();
+    }
+}

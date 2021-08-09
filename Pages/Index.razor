@@ -1,0 +1,28 @@
+﻿@page "/"
+@inject IJSRuntime JS
+
+<div id="page" @onscroll="ScrollData">
+    <blazorApp.Components.NavBar />
+    <Init />
+    <CascadingValue Value=@dataApp>
+        <About />
+        <Services />
+        <Portfolio />
+        <Contact />
+    </CascadingValue>
+    <blazorApp.Components.Footer />
+    <blazorApp.Components.UpButton Show="@ShowBtn"/>
+</div>
+
+@using blazorApp.Shared 
+@code{
+    DataApp dataApp = new DataApp();
+    async Task ScrollData(){
+        dataApp.SizeScreenY = await JS.InvokeAsync<int>("eval", "document.documentElement.clientHeight;"); 
+        dataApp.ScrollDataY = await JS.InvokeAsync<double>("eval", "document.getElementById('page').scrollTop;");
+        //Console.WriteLine(dataApp.ScrollDataY);
+        if(dataApp.ScrollDataY > 200) ShowBtn = "up-button-show";
+        else ShowBtn = "";
+    }
+    private string ShowBtn;
+}

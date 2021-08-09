@@ -1,0 +1,52 @@
+
+@import './constants.css';
+@import './navBar.css';
+@import './upButton.css';
+@import './init.css';
+@import './about.css';
+@import './services.css';
+@import './portfolio.css';
+@import './contact.css';
+@import './footer.css';
+@import './ligthbox.css';
+
+
+/*- Logo de inicio ------------------------------------*/
+.logo-init{
+    background: linear-gradient(90deg, var(--color1) 0%, var(--color1) 100%) ,url(../img/fondo1.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+.logo-init img{
+    width: 350px;
+    animation: fade-in-out 2s infinite;
+}
+@keyframes fade-in-out {
+    0% { opacity: 0;}
+    50% { opacity: 1;}
+    100% { opacity: 0;}
+}
+/*- blazor error ------------------------------------*/
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }

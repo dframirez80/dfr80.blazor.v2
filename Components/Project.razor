@@ -1,0 +1,51 @@
+<div @onclick="@ProjectShow" class="works-project" style="background-image: url(./img/@BGImage);">
+    <div class="work-container">
+        <h4 class="work-title">@Title</h4>
+        <div class="work-tech">
+            @foreach (var item in @Images)
+            {
+                <img src="./img/@item" alt="@item">
+            }
+        </div>
+            <p>@Info</p>
+        <div class="link">@Link</div>
+    </div>
+</div>
+<div class="project-sample @Show">
+        <button @onclick="@ProjectHide" id="btn-close" class="fa fa-times"></button>
+        <div class="project-container">
+            <h2 class="project-title">@Title</h2>
+            <div class="line"></div>
+            <div class="project-img" style="background-image: url(./img/@BGImage);"></div>
+            <div class="line"></div>
+            <div class="project-description">@Info</div>
+            <div class="line"></div>
+            <div class="project-tech">
+                @foreach (var item in @Images)
+                {
+                    <img src="./img/@item" alt="@item">
+                }
+            </div>
+            <div class="line"></div>
+            <div class="project-link">
+                <a class="btn-1" href="@Link" target="_blank">VISITAR</a>
+            </div>
+        </div>
+    </div>
+
+@code{
+    [Parameter] public string BGImage { get; set; }
+    [Parameter] public string Title{ get; set; }
+    [Parameter] public List<string> Images {get; set;}
+    [Parameter] public string Info { get; set; }
+    [Parameter] public string Link { get; set; }
+    private string Show;
+
+    private void ProjectShow(){
+        Show = "project-show";
+    }
+    private void ProjectHide(){
+        Show = "";
+    }
+
+}

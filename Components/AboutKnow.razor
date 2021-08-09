@@ -1,0 +1,29 @@
+<div id="aboutKnow" class="about-technologies @effectClass">
+        <h2>Competencias</h2>
+        <div class="tech-container">
+            <Tech image="c.png" text="C" />
+            <Tech image="cpp.png" text="C++" />
+            <Tech image="csharp.png" text="C Sharp" />
+            <Tech image="git.png" text="Git" />
+            <Tech image="html.png" text="HTML" />
+            <Tech image="css.png" text="CSS" />
+            <Tech image="js.png" text="Javascript" />
+            <Tech image="mysql.png" text="MySQL" />
+            <Tech image="php.png" text="PHP" />
+            <Tech image="xamarin.png" text="Xamarin Android" />
+            <Tech image="se.png" text="Sistemas Embebidos" />
+            <Tech image="blazor.png" text="Blazor Wasm" />
+        </div>
+</div>
+
+
+@inject IJSRuntime JS
+@code{
+    [CascadingParameter] private DataApp dataAbout { get; set; }
+    string effectClass = "effect-hide", myId="aboutKnow";
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        dataAbout.PositionElement = await JS.InvokeAsync<double>("eval", "document.getElementById('"+myId+"').getBoundingClientRect().top;");
+        effectClass = dataAbout.Effect();
+    }
+}

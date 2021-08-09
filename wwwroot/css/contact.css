@@ -1,0 +1,127 @@
+@import './constants.css';
+
+/***********************************************/   
+/****************** contacto ******************/
+.contact-container{
+  display: flex;
+  flex-flow: row wrap;
+  height: auto;
+  padding: 20px;
+  width: 100%;
+  height: auto;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0px 10px 5px 0px var(--color1);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 100%) ,url(../img/code.jpg) no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+  .contact-title{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 500px;
+    width: 95%;
+    height: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.2rem;
+  } 
+  .contact-title p{
+    margin: 15px;
+  }
+  .contact-social{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .contact-social a{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.4s ease-in;
+}
+  .contact-social a:hover{
+    background-color: var(--color6);
+      box-shadow: 0px 0px 15px 0px var(--color5);
+  }
+  .contact-social a i{
+    font-size: 2rem;
+  }
+  .contact-form{
+    border-radius: 15px;
+    background-color: var(--color0);
+    max-width: 500px;
+    width: 95%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    padding: 15px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0px 0px 15px 0px var(--color6);
+  } 
+  .form-user-data{
+    padding: 5px;
+    flex: 6 1 auto;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .form-text{
+    text-indent: 10px;
+    width: 80%;
+    height: 40px;
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+    margin: 2px;
+    font-size: medium;
+    background: var(--color1);
+    color: var(--color2);
+    transition: all 0.3s ease-in;
+  }
+  .form-text:focus{
+    color: var(--color1);
+  }
+  .form-text::placeholder{
+    color: var(--color2);
+  }
+  .form-text:hover::placeholder{
+    color: var(--color1);
+  }
+  .area{
+    height: 150px;
+  }
+ .form-text:hover{
+    background: var(--color2);
+    border: 1px solid var(--color2);
+  }
+  .form-btn-style{
+    background-color: var(--color1);
+    color: var(--color2);
+    border-radius: 5px;
+    border: 0;
+    width: 150px;
+    height: 40px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease-in;
+  }
+  .form-btn-style:hover{
+    background-color: var(--color2);
+    color: var(--color1);
+    border: 3px solid var(--color1);
+  }
+  

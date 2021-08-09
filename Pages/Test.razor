@@ -1,0 +1,47 @@
+@page "/test"
+@inject IJSRuntime JS
+<div style="background: black; height: 100vh; overflow-y: auto;" @onscroll="ScrollData">
+    <div @ref=uno style="background: black; height:100vh;">
+        Test
+        <h3>Aislamiento de js @dataRead</h3>
+    </div>
+    
+    <div id="myDiv" @ref=dos style="background: red; height:100vh;" class=@clase>
+        Test
+        <h3>Aislamiento de js @dataRead @clase</h3>
+    </div>
+    
+    <div style="background: blue; height:100vh;">
+        Test
+        
+        <h3>Aislamiento de js @dataRead</h3>
+    </div>
+</div>
+@code{
+    ElementReference uno, dos;
+    IJSObjectReference module;
+    double dataRead;
+    string clase;
+    public void Scroll(double value){
+        Console.WriteLine(value);
+        if(value > dataRead){
+            clase="Mostrar";
+            StateHasChanged();
+        } 
+    }    
+    async Task ScrollData(){
+        double d = await JS.InvokeAsync<double>("eval", "document.getElementById('myDiv').getBoundingClientRect().top;");
+        double y = await JS.InvokeAsync<int>("eval", "window.scrollY;");  
+        double s = await JS.InvokeAsync<int>("eval", "document.documentElement.clientHeight;"); 
+        Console.WriteLine("scr"+d+' '+y+' '+s);
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender){
+        if(firstRender){
+            module = await JS.InvokeAsync<IJSObjectReference>("import", "./test.js");
+            dataRead = await module.InvokeAsync<double>("getPositionElement", dos);
+            StateHasChanged();
+        }
+    }
+ 
+
+}

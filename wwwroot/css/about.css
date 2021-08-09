@@ -1,0 +1,103 @@
+@import './constants.css';
+
+/***********************************************/        
+/******************* acerca ********************/
+.about-container{
+    width: 100%;
+    height: auto;
+    background-color: var(--color1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0px 10px 5px 0px var(--color1);
+    background: linear-gradient(90deg, var(--color1) 0%, var(--color1) 100%) ,url(../img/fondo1.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.about-description p{
+    color: var(--color7);
+    padding: 10px;
+    width: 100%;
+    margin: auto;
+}
+.about-technologies{
+    width: 100%;
+    padding-top: 10px;
+}
+.tech-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.tech{
+    width: 160px;
+    display: flex;
+    align-items: center;
+}
+.tech img{
+    width: 80px;
+    transform: translateX(50%);
+    transition: all 0.5s ease-in-out;
+    z-index: 1;
+}
+.tech-title{
+    width: 110px;
+    text-align: center;
+    font-size: 1rem;
+    text-transform: uppercase;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+}
+.tech:hover img{
+    animation-name: forward50;
+    animation-duration: 1.5s;
+}
+.tech:hover .tech-title{
+    animation-name: back-50;
+    animation-duration: 1.5s;
+}
+@keyframes back-50{
+    0%   {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+    25% {
+        transform: translateX(0%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+
+    }
+    50%{
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+    75% {
+        transform: translateX(-100%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    100%   {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+}
+@keyframes forward50{
+    0%   {
+        transform: translateX(50%);
+    }
+    25% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    50%{
+        z-index: 0;
+        opacity: 0.2;
+    }
+    75% {
+        transform: translateX(100%);
+        opacity: 1;
+    }
+    100%{
+        transform: translateX(50%);
+    }
+}

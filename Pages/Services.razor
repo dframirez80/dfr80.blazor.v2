@@ -1,0 +1,35 @@
+@page "/services"
+<section id="servicios"  class="services-container">
+    <div class="services @effectClass">
+        <h2>Servicios</h2>
+        <blazorApp.Components.Service 
+            logo="fas fa-code" title="Programación Web" 
+            info="Desarrollo sitios y aplicaciones para plataformas Web. Desde el Frontend, Backend y Base de Datos."
+        />
+        <blazorApp.Components.Service 
+            logo="fas fa-server" title="Web Hosting" 
+            info="Proporciono los servicios para obtener tu dominio y hospedaje para que tu web este disponible las 24hs."
+        />
+        <blazorApp.Components.Service 
+            logo="fas fa-microchip" title="Sistemas Embebidos" 
+            info="Desarrollo sistemas procesados desde el diseño electronico hasta la puesta en marcha de tu producto."
+        />
+        <blazorApp.Components.Service 
+            logo="fas fa-mobile-alt" title="Aplicaciones" 
+            info="Desarrollo aplicaciones para plataformas de escritorio y sistemas basados en android."
+        />
+    </div>
+</section>
+
+
+@inject IJSRuntime JS
+@code{
+    [CascadingParameter] private DataApp dataAbout { get; set; }
+    string effectClass = "effect-hide", myId="servicios";
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        dataAbout.PositionElement = await JS.InvokeAsync<double>("eval", "document.getElementById('"+myId+"').getBoundingClientRect().top;");
+        //Console.WriteLine(dataAbout.PositionElement);
+        effectClass = dataAbout.Effect();
+    }
+}

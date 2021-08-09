@@ -1,0 +1,157 @@
+@import './constants.css';
+
+/***********************************************/   
+/****************** portafolio ******************/
+.works{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.works-container{
+    width: 100%;
+    height: auto;
+    background-color: var(--color1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    row-gap: 20px;
+    padding: 20px;
+    background: linear-gradient(90deg, var(--color1) 0%, var(--color1) 100%) ,url(../img/fondo1.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.works-project{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.works-project:hover .work-container{
+    opacity: 1;
+    cursor: pointer;
+    background-color: var(--color1);
+}
+.work-container{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    opacity: 0;
+    text-align: center;
+    padding: 10px;
+    transition: all 0.4s ease;
+    border: 1px solid var(--color2);
+    margin: 5px;
+}
+.work-container p{
+    font-size: 0.8rem;
+}
+    .work-title{
+        font-size: 1.2rem;
+        text-align: center;
+        width: 100%;
+    }
+    .work-tech{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .work-tech img{
+        width: 30px;
+    }
+.link{
+    display: none;
+}
+
+/* lightbox sample*/
+.line{
+    width: 75%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color6) 0%, var(--color5) 50%, var(--color6) 100%);
+}
+#btn-close{
+    position: sticky;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color5);
+    color: var(--color2);
+    font-size: 1.5rem;
+    border: 0;
+    cursor: pointer;
+    top: 1vh;
+    left: 90vw;  
+    border-radius: 50%;
+}
+.project-sample{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: var(--colorNegro);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 101;
+    opacity: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: clip-path 0.5s ease-in-out, opacity 0.7s ease;
+    overflow-y: scroll;
+}
+.project-container{
+    background-color: var(--color2);
+    border: 2px solid var(--color3);
+    border-radius: 10px;
+    width: 90%;
+    margin: auto;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+.project-title{
+    color: var(--color1);
+    padding: 10px;
+    text-align: center;
+}
+.project-img{
+    margin: 5px;
+    width: 300px;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.project-description {
+    color: var(--color1);
+    font-size: 1rem;
+    width: 90%;
+    margin: auto;
+    align-self: flex-start;
+    padding: 20px;
+}
+.project-tech, .project-link{
+    padding: 10px;
+    color: var(--color1);
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.project-tech img{
+    width: 50px;
+}
+
+.project-description p{
+    margin: 20px;
+}
+.project-show{
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}

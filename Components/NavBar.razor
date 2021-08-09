@@ -1,0 +1,30 @@
+<div class="navbar-container">
+    <div class="navbar-title"> 
+        <img class="title-img" src="./img/logo_dfr.png" alt="logo dfr80">
+        <div class="title-text">Dario Ramirez</div>
+    </div>
+    <div class="navbar-btn" @onclick="ActiveMenu" ><i class=@icon></i></div>
+    <nav class="navbar-menu @show" @onclick="ActiveMenu" >
+        <a class="menu-item" href="" target="_top">inicio</a>
+        <a class="menu-item" href="#about" target="_top">acerca</a>
+        <a class="menu-item" href="#servicios" target="_top">servicios</a>
+        <a class="menu-item" href="#portafolio" target="_top">portafolio</a>
+        <a class="menu-item" href="#contacto" target="_top">contacto</a>
+    </nav>        
+</div>
+
+@code{
+    private bool actived = false;
+    private string icon = "fa fa-bars", show = "";
+    public void ActiveMenu(){
+        if(actived){
+            icon = "fa fa-bars";
+            show = "";
+            actived = false;
+        } else{
+            icon = "fa fa-times";
+            show = "navbar-menu-show";
+            actived = true;
+        }
+    }
+}

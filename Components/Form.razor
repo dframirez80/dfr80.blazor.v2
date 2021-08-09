@@ -1,0 +1,58 @@
+
+<form id="formContacto" class="contact-form" @onsubmit="SendEmail" method="GET">
+    <div class="form-user-data @effectClass">
+        <input class="form-text" @bind="names" placeholder="Nombres" required>
+        <input class="form-text" @bind="surname" placeholder="Apellidos" required>
+        <input class="form-text" type="email" @bind="email" placeholder="Ingrese E-mail" required>
+        <textarea class="form-text area" @bind="message" placeholder="¿Deseas escribirme?, ¡hazlo aqui!" required></textarea><br/>
+        <button class="form-btn-style" type="submit" >@value</button>
+    </div>
+</form>
+<div id="win-ligthbox" class=@hide > 
+    <div class="ligthbox-container">
+        <h2 id="title">Aviso</h2>
+        <div id="message">@dataReceived</div>
+        <button id="btn-ligthbox" @onclick="Hide"> ACEPTAR </button>
+    </div>
+</div> 
+
+@using Newtonsoft.Json.Linq
+@inject IJSRuntime JS
+@code{
+    [CascadingParameter] private DataApp dataAbout { get; set; }
+    string effectClass = "effect-hide", myId="formContacto";
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        dataAbout.PositionElement = await JS.InvokeAsync<double>("eval", "document.getElementById('"+myId+"').getBoundingClientRect().top;");
+        effectClass = dataAbout.Effect();
+    }
+    string dataReceived = "", hide = "hide";
+    string names, surname, email, message, value = "ENVIAR";
+    void Hide(){
+        hide = "hide"; dataReceived = "";
+    }
+    async Task SendEmail(){
+        using (HttpClient Client = new HttpClient()){
+            value="ENVIANDO..";
+            /*var result = await Client.GetStringAsync("https://apis.datos.gob.ar/georef/api/provincias?campos=nombre");
+            //Console.WriteLine(result);
+            dynamic json = JObject.Parse(result);
+            foreach (var e in json.provincias){   
+                Console.WriteLine(e.nombre);
+            }*/
+            var dataSend = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("names", names), 
+                new KeyValuePair<string, string>("surname", surname),
+                new KeyValuePair<string, string>("email", email), 
+                new KeyValuePair<string, string>("message", message)
+            });
+            var resp = await Client.PostAsync("https://dfr80.com.ar/accessContactWeb.php", dataSend);
+            dataReceived = await resp.Content.ReadAsStringAsync();
+            if(dataReceived != "") hide = ""; 
+            //StateHasChanged();
+            Console.WriteLine(dataReceived);
+            value="ENVIAR";
+        }
+    }
+}
